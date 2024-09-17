@@ -1,0 +1,6 @@
+@AppPDF.Server_HostAddress = http://localhost:5129
+
+GET {{AppPDF.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

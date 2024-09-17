@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPDF.Server", "AppPDF.Server\AppPDF.Server.csproj", "{B2DEA22C-3256-4559-8AF2-29ED630794CC}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "apppdf.client", "apppdf.client\apppdf.client.esproj", "{2F55B44F-B2AB-45B7-883A-D7120148C778}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2DEA22C-3256-4559-8AF2-29ED630794CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DEA22C-3256-4559-8AF2-29ED630794CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DEA22C-3256-4559-8AF2-29ED630794CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DEA22C-3256-4559-8AF2-29ED630794CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F55B44F-B2AB-45B7-883A-D7120148C778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F55B44F-B2AB-45B7-883A-D7120148C778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F55B44F-B2AB-45B7-883A-D7120148C778}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2F55B44F-B2AB-45B7-883A-D7120148C778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F55B44F-B2AB-45B7-883A-D7120148C778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F55B44F-B2AB-45B7-883A-D7120148C778}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A36A3D12-DFE8-4A29-BC06-9680BC0D054D}
+	EndGlobalSection
+EndGlobal
