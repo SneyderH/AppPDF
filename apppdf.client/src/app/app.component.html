@@ -1,10 +1,15 @@
-﻿<h1 id="tableLabel">Weather forecast</h1>
+<h1 id="tableLabel">Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
 <p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
 
-<table *ngIf="forecasts">
+<div style="text-align:center;">
+  <h1>{{ title }}</h1>
+  <app-pdf></app-pdf>
+</div>
+
+<!--<table *ngIf="forecasts">
     <thead>
         <tr>
             <th>Date</th>
@@ -21,4 +26,4 @@
             <td>{{ forecast.summary }}</td>
         </tr>
     </tbody>
-</table>
+</table>-->

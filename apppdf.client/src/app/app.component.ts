@@ -33,5 +33,5 @@ export class AppComponent implements OnInit {
     );
   }
 
-  title = 'apppdf.client';
+  title = 'Hola Mundo!';
 }
