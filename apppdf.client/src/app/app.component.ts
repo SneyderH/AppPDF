@@ -33,5 +33,5 @@ export class AppComponent implements OnInit {
     );
   }
 
-  title = 'Hola Mundo!';
+  title = 'Manipulador PDF';
 }
