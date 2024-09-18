@@ -17,6 +17,18 @@ builder.Services.AddDbContext<PdfContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL"));
 });
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("NuevaPolitica", app =>
+    {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
+
 var app = builder.Build();
 
 app.UseDefaultFiles();
@@ -30,6 +42,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("NuevaPolitica");
 
 app.UseAuthorization();
 

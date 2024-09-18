@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using AppPDF.Server.Models;
 using System.IO;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text;
 
 namespace AppPDF.Server.Controllers
 {
@@ -73,7 +74,6 @@ namespace AppPDF.Server.Controllers
         {
             try
             {
-                List<PdfFile> files = new List<PdfFile>();
                 using (var conexion = new SqlConnection(_cadenaSQL))
                 {
                     conexion.Open();
@@ -83,24 +83,59 @@ namespace AppPDF.Server.Controllers
 
                     using (var reader = cmd.ExecuteReader())
                     {
+                        var files = new List<PdfFile>();
+
                         while (reader.Read())
                         {
                             files.Add(new PdfFile
                             {
-                                Id = (int)reader["Id"],
-                                Nombre = reader["Nombre"].ToString(),
-                                Archivo = reader["Archivo"].ToString()
+                                Id = reader.GetInt32(0),
+                                Nombre = reader.GetString(1),
+                                Archivo = reader["archivo"].ToString()
                             });
                         }
+
+                        return Ok(files);
                     }
+
+                    //return StatusCode(StatusCodes.Status200OK, new { message = "Archivo Listado." });
                 }
 
-                return Ok(files);
-            } 
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, new { message = ex.Message });
             }
+            catch (Exception ex) 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
+            }
+            //try
+            //{
+            //    List<PdfFile> files = new List<PdfFile>();
+            //    using (var conexion = new SqlConnection(_cadenaSQL))
+            //    {
+            //        conexion.Open();
+            //        var cmd = new SqlCommand("SP_LIST_FILE", conexion);
+            //        cmd.CommandType = CommandType.StoredProcedure;
+            //        cmd.ExecuteNonQuery();
+
+            //        using (var reader = cmd.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                files.Add(new PdfFile
+            //                {
+            //                    Id = (int)reader["Id"],
+            //                    Nombre = reader["Nombre"].ToString(),
+            //                    Archivo = reader["Archivo"].ToString()
+            //                });
+            //            }
+            //        }
+            //    }
+
+            //    return Ok(files);
+            //} 
+            //catch (Exception ex)
+            //{
+            //    return StatusCode(StatusCodes.Status400BadRequest, new { message = ex.Message });
+            //}
         }
 
     }
