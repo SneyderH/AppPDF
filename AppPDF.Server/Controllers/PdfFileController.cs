@@ -95,6 +95,7 @@ namespace AppPDF.Server.Controllers
                             });
                         }
 
+
                         return Ok(files);
                     }
 
@@ -106,36 +107,6 @@ namespace AppPDF.Server.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
             }
-            //try
-            //{
-            //    List<PdfFile> files = new List<PdfFile>();
-            //    using (var conexion = new SqlConnection(_cadenaSQL))
-            //    {
-            //        conexion.Open();
-            //        var cmd = new SqlCommand("SP_LIST_FILE", conexion);
-            //        cmd.CommandType = CommandType.StoredProcedure;
-            //        cmd.ExecuteNonQuery();
-
-            //        using (var reader = cmd.ExecuteReader())
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                files.Add(new PdfFile
-            //                {
-            //                    Id = (int)reader["Id"],
-            //                    Nombre = reader["Nombre"].ToString(),
-            //                    Archivo = reader["Archivo"].ToString()
-            //                });
-            //            }
-            //        }
-            //    }
-
-            //    return Ok(files);
-            //} 
-            //catch (Exception ex)
-            //{
-            //    return StatusCode(StatusCodes.Status400BadRequest, new { message = ex.Message });
-            //}
         }
 
     }

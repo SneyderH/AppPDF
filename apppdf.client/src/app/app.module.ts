@@ -5,16 +5,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PDFComponent } from './filepdf/filepdf.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MaterialModule } from './material/material.module';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
-    AppComponent, PDFComponent
+    AppComponent,
+    PDFComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,
-    AppRoutingModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MaterialModule,
+    MatTableModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
