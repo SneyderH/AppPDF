@@ -24,6 +24,6 @@ import { MatTableModule } from '@angular/material/table';
   providers: [
     provideAnimationsAsync()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, PDFComponent]
 })
 export class AppModule { }

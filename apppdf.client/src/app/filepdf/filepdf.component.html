@@ -1,4 +1,11 @@
-<button>Subir PDF</button>
+
+<div class="mb-3 gap-2 col-6 mx-auto ">
+  <input class="form-control" type="file" #fileInput />
+</div>
+
+<div class="row d-grid gap-2 col-6 mx-auto">
+  <input type="submit" (click)="getFilePDF($event, fileInput)" class="btn btn-success" />
+</div>
 
 <div>
   <h2>Archivos PDF</h2>
