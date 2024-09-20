@@ -2,6 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../services/api.services";
 import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
 
+//Sweetalert
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
+
 @Component({
   selector: 'app-pdf',
   templateUrl: './filepdf.component.html',
@@ -43,14 +47,21 @@ export class PDFComponent implements OnInit {
         next: (result: HttpResponse<FileList>) => {
           this.FillData();
         }, error: (Error: HttpErrorResponse) => {
-          console.log(Error);
+          Swal.fire({
+            icon: "error",
+            title: "¡Formato Incorrecto!",
+            text: "El archivo debe ser .pdf"
+          });
         }, complete: () => {
           console.log("Archivo insertado.");
         }
       });
     }
     else {
-      alert("No hay archivos cargados.")
+      Swal.fire({
+        icon: "info",
+        text: "Seleccione un archivo para cargar.",
+      });
     }
   }
 
@@ -58,7 +69,10 @@ export class PDFComponent implements OnInit {
   delete(id: string): void {
     this.apiService.DeleteFile(id).subscribe({
       next: () => {
-        console.log("Archivo eliminado.");
+        Swal.fire({
+          icon: "success",
+          title: "¡Archivo Eliminado!"
+        });
         this.FillData(); // Actualiza la lista después de eliminar
       }, error: (error: HttpErrorResponse) => {
         console.error("Error al eliminar el archivo:", error);

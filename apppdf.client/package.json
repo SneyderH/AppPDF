@@ -29,6 +29,7 @@
     "ngx-extended-pdf-viewer": "^21.4.1",
     "run-script-os": "*",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.14.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },
