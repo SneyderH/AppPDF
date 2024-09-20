@@ -8,6 +8,8 @@ import { PDFComponent } from './filepdf/filepdf.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './material/material.module';
 import { MatTableModule } from '@angular/material/table';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
-    MatTableModule
+    MatTableModule,
+    PdfViewerModule,
+    BrowserModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [
     provideAnimationsAsync()

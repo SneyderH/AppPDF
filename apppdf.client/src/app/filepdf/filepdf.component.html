@@ -7,16 +7,28 @@
   <input type="submit" (click)="getFilePDF($event, fileInput)" class="btn btn-success" />
 </div>
 
-<div>
-  <h2>Archivos PDF</h2>
+<div class="mt-5">
 
-  <ul>
-    <li *ngFor="let item of data">
-      {{ item.nombre }}
-    </li>
+  <table class="table table-danger table-bordered table-striped w-75" style="margin: 50px auto">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Archivo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
 
-    <li *ngFor="let item of data">
-      {{ item.archivo }}
-    </li>
-  </ul>
+    <tbody>
+      <tr class="table-light" *ngFor="let item of data">
+        <!--<th>{{ item.id }}</th>-->
+        <th>{{ item.nombre }}</th>
+        <th>{{ item.archivo }}</th>
+        <th style="gap: 5px;">
+          <button class="btn btn-info me-2" style="width: 40%;">Visualizar</button>
+          <button class="btn btn-danger" (click)="delete(item.id)" style="width: 40%;">Eliminar</button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+
 </div>

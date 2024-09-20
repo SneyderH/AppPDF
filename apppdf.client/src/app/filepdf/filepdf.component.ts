@@ -17,6 +17,7 @@ export class PDFComponent implements OnInit {
     this.FillData();
   }
 
+  //INSERTAR DOCUMENTO PDF
   FillData() {
     this.apiService.getData().subscribe(data => {
       this.data = data;
@@ -24,6 +25,8 @@ export class PDFComponent implements OnInit {
     })
   }
 
+
+  //LISTAR DOCUMENTOS INSERTADOS
   getFilePDF(event: Event, fileInput: HTMLInputElement) {
 
     event.preventDefault();
@@ -53,6 +56,19 @@ export class PDFComponent implements OnInit {
     else {
       alert("No hay archivos cargados.")
     }
+  }
+
+  //ELIMINAR DOCUMENTOS CARGADOS
+  delete(id: string): void {
+    this.apiService.DeleteFile(id).subscribe({
+      next: () => {
+        console.log("Archivo eliminado.");
+        console.log(id);
+        this.FillData(); // Actualiza la lista después de eliminar
+      }, error: (error: HttpErrorResponse) => {
+        console.error("Error al eliminar el archivo:", error);
+      }
+    });
   }
 
 }

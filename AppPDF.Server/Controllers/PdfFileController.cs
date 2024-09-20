@@ -109,5 +109,31 @@ namespace AppPDF.Server.Controllers
             }
         }
 
+        [HttpDelete("DeleteFiles/{id}")]
+        public IActionResult DeleteFile(string id)
+        {
+
+            string idFile = string.Empty;
+            try
+            {
+                using(var conexion = new SqlConnection(_cadenaSQL))
+                {
+                    conexion.Open();
+                    var cmd = new SqlCommand("SP_DELETE_FILE", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(id));
+                    cmd.ExecuteNonQuery();
+
+                    idFile = id;
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new { message = "Archivo Eliminado." });
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
+            }
+        }
+
     }
 }
