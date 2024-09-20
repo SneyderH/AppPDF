@@ -23,4 +23,8 @@ export class ApiService {
   DeleteFile(id: string): Observable<void> {
     return this.http.delete<void>(`${ this.urlApi }/PdfFile/DeleteFiles/${id}`)
   }
+
+  getPdfFile(id: string) {
+    return this.http.get(`${this.urlApi}/PdfFile/ShowPDF/${id}`, { responseType: 'blob' })
+  }
 }

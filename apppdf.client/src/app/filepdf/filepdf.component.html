@@ -22,9 +22,9 @@
       <tr class="table-light" *ngFor="let item of data">
         <!--<th>{{ item.id }}</th>-->
         <th>{{ item.nombre }}</th>
-        <th>{{ item.archivo }}</th>
+        <!--<th>{{ item.archivo }}</th>-->
         <th style="gap: 5px;">
-          <button class="btn btn-info me-2" style="width: 40%;">Visualizar</button>
+          <button class="btn btn-info me-2" (click)="viewPdf(item.id)" style="width: 40%;">Visualizar</button>
           <button class="btn btn-danger" (click)="delete(item.id)" style="width: 40%;">Eliminar</button>
         </th>
       </tr>

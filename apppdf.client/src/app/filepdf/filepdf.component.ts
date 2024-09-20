@@ -22,6 +22,7 @@ export class PDFComponent implements OnInit {
     this.apiService.getData().subscribe(data => {
       this.data = data;
       console.log(this.data)
+      //this.FillData();
     })
   }
 
@@ -46,6 +47,7 @@ export class PDFComponent implements OnInit {
       this.apiService.Upload(formData).subscribe({
         next: (result: HttpResponse<FileList>) => {
           console.log(result);
+          this.FillData();
         }, error: (Error: HttpErrorResponse) => {
           console.log(Error);
         }, complete: () => {
@@ -67,6 +69,19 @@ export class PDFComponent implements OnInit {
         this.FillData(); // Actualiza la lista después de eliminar
       }, error: (error: HttpErrorResponse) => {
         console.error("Error al eliminar el archivo:", error);
+      }
+    });
+  }
+
+
+  viewPdf(id: string): void {
+    this.apiService.getPdfFile(id).subscribe({
+      next: (response: Blob) => {
+        const fileURL = URL.createObjectURL(response);
+        console.log(id)
+        window.open(fileURL, '_blank');
+      },error: (error: HttpErrorResponse) => {
+        console.error("Error al visualizar el archivo:", error);
       }
     });
   }

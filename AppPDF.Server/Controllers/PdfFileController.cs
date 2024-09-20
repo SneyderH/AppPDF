@@ -135,5 +135,36 @@ namespace AppPDF.Server.Controllers
             }
         }
 
+        [HttpGet("ShowPDF/{id}")]
+        public IActionResult ShowPDF(string id)
+        {
+            try
+            {
+                using (var conexion = new SqlConnection(_cadenaSQL))
+                {
+                    conexion.Open();
+                    var cmd = new SqlCommand("SP_GET_FILE", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(id));
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        var fileContent = reader["archivo"].ToString();
+                        var fileBytes = Convert.FromBase64String(fileContent);
+                        return File(fileBytes, "application/pdf", "file.pdf");
+                    }
+                    else
+                    {
+                        return NotFound(new { message = "Archivo no encontrado." });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
+            }
+        }
+
     }
 }
