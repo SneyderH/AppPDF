@@ -6,6 +6,10 @@ using AppPDF.Server.Models;
 using System.IO;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Text;
+using iTextSharp.text.pdf;
+using iText.Kernel.Pdf;
+using iText.Signatures;
+using iTextSharp.text.pdf.security;
 
 namespace AppPDF.Server.Controllers
 {
@@ -163,6 +167,33 @@ namespace AppPDF.Server.Controllers
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
+            }
+        }
+
+        [HttpPost("sign/{id}")]
+        public IActionResult SignPdf(string id)
+        {
+            // Obtener el PDF desde la base de datos usando el id
+            using (var conexion = new SqlConnection(_cadenaSQL))
+            {
+                conexion.Open();
+                var cmd = new SqlCommand("SP_GET_FILE", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(id));
+
+                using(var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var fileContent = reader["archivo"].ToString();
+                        var fileBytes = Convert.FromBase64String(fileContent);
+                        return File(fileBytes, "application/pdf", "Archivo_Firmado.pdf");
+                    }
+                    else
+                    {
+                        return NotFound("Archivo no encontrado.");
+                    }
+                }
             }
         }
 

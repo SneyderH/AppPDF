@@ -13,8 +13,8 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Archivo</th>
         <th>Acciones</th>
+        <!--<th>Archivo</th>-->
       </tr>
     </thead>
 
@@ -24,8 +24,9 @@
         <th>{{ item.nombre }}</th>
         <!--<th>{{ item.archivo }}</th>-->
         <th style="gap: 5px;">
-          <button class="btn btn-info me-2" (click)="viewPdf(item.id)" style="width: 40%;">Visualizar</button>
-          <button class="btn btn-danger" (click)="delete(item.id)" style="width: 40%;">Eliminar</button>
+          <button class="btn btn-warning me-2" (click)="downloadPdf(item.id)" style="width: 30%;">Firmar</button>
+          <button class="btn btn-info me-2" (click)="viewPdf(item.id)" style="width: 30%;">Visualizar</button>
+          <button class="btn btn-danger" (click)="delete(item.id)" style="width: 30%;">Eliminar</button>
         </th>
       </tr>
     </tbody>

@@ -21,10 +21,14 @@ export class ApiService {
   }
 
   DeleteFile(id: string): Observable<void> {
-    return this.http.delete<void>(`${ this.urlApi }/PdfFile/DeleteFiles/${id}`)
+    return this.http.delete<void>(`${this.urlApi}/PdfFile/DeleteFiles/${id}`);
   }
 
   getPdfFile(id: string) {
-    return this.http.get(`${this.urlApi}/PdfFile/ShowPDF/${id}`, { responseType: 'blob' })
+    return this.http.get(`${this.urlApi}/PdfFile/ShowPDF/${id}`, { responseType: 'blob' });
+  }
+
+  downloadPdf(id: string) {
+    return this.http.post(`${this.urlApi}/PdfFile/sign/${id}`, {}, { responseType: 'blob' });
   }
 }
