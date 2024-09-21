@@ -1,15 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AppPDF.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
-using AppPDF.Server.Models;
-using System.IO;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Text;
-using iTextSharp.text.pdf;
-using iText.Kernel.Pdf;
-using iText.Signatures;
-using iTextSharp.text.pdf.security;
 
 namespace AppPDF.Server.Controllers
 {

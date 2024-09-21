@@ -21,16 +21,15 @@ export class PDFComponent implements OnInit {
     this.FillData();
   }
 
-  //INSERTAR DOCUMENTO PDF
+  //LISTAR DOCUMENTOS INSERTADOS
   FillData() {
     this.apiService.getData().subscribe(data => {
       this.data = data;
-      //this.FillData();
     })
   }
 
 
-  //LISTAR DOCUMENTOS INSERTADOS
+  //INSERTAR DOCUMENTO PDF
   getFilePDF(event: Event, fileInput: HTMLInputElement) {
 
     event.preventDefault();
@@ -54,6 +53,9 @@ export class PDFComponent implements OnInit {
           });
         }, complete: () => {
           console.log("Archivo insertado.");
+          fileInput.value = '';
+          (document.querySelector('input[type="submit"]') as HTMLInputElement).disabled = false;
+          this.FillData();
         }
       });
     }
